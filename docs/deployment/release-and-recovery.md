@@ -6,6 +6,8 @@ Private GitHub repository and linked foundation issue; feature PR; passing Flutt
 
 Set branch protection for `main`: PR required, no force-push/deletion, required Flutter CI/Database CI. Restrict deployment credentials to protected environments. GitHub Actions use read-only repository permissions. Pin action revisions before production release; Flutter is pinned and pubspec.lock committed.
 
+Protection setup was attempted on 2026-09-25, but GitHub returned HTTP 403: the private repository's current plan requires Pro. The repository remains private. Until resolved, these checks are workflow policy rather than enforced branch rules.
+
 Build web with public configuration and `APP_VERSION`/`GIT_SHA`; host HTTPS with correct WASM type and cache immutable assets by build. Test refresh/deep links, keyboard navigation and session expiry. PWA installation is not an offline transaction guarantee. Android requires a signed release on an SDK-equipped host; iOS requires macOS, entitlements and signing. No native build success is claimed from a Windows web-only validation.
 
 ## Backup and restore plan

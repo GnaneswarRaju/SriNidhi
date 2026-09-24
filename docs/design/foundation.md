@@ -10,7 +10,7 @@ Palette: canvas #F7F6FA, ink #282333, primary #6750A4, muted #49454F, white card
 
 Reusable Flutter primitives: Material form fields/buttons/navigation, `InfoCard`, `PageContent`, theme and ARB strings. Figma holds Material library instances; custom store token variables and a full component/variant library are still planned. The overview frames are layout references with sample copy describing where verified branch data belongs; they are not screenshots of live financial data.
 
-Parity notes: Flutter adds password visibility, validation/loading/error states, actual branch cards and storage/offline information. The Figma sign-in button instance currently renders at intrinsic width while Flutter uses a full-width touch target. Track these differences explicitly before the final design review; do not imply pixel parity. Later screen design precedes each major module and its PR links the relevant node plus actual screenshots.
+Parity notes: Flutter adds password visibility, validation/loading/error states, actual branch cards and storage/offline information. Figma's nested Material button fills were corrected to full width at all three sizes and the desktop composition was inspected against the Flutter render; its text uses Roboto. Track remaining state/component differences explicitly before final design review; do not imply pixel parity. Later screen design precedes each major module and its PR links the relevant node plus actual screenshots.
 
 ## Inspected implementation previews
 
