@@ -140,36 +140,36 @@ Never collect unnecessary sensitive financial or personal information in analyti
 
 Use this structure:
 
-GitHub  
+GitHub
 = source code + history + issues + PRs + CI + releases
 
-Supabase  
+Supabase
 = backend + database + authentication + storage + server-side logic
 
-Figma  
+Figma
 = UI/UX design
 
-PostHog  
+PostHog
 = analytics + monitoring + feature flags after beta
 
-Flutter  
+Flutter
 = client application
 
-SQLite/Drift  
+SQLite/Drift
 = local/offline data layer
 
 The architecture should look conceptually like:
 
-ChatGPT / Codex / AI Developer  
-↓  
-GitHub  
-↓  
-Flutter Application  
-↓  
-Repository Layer  
-↓  
-Local SQLite + Supabase  
-↓  
+ChatGPT / Codex / AI Developer
+↓
+GitHub
+↓
+Flutter Application
+↓
+Repository Layer
+↓
+Local SQLite + Supabase
+↓
 PostgreSQL
 
 Figma supports the design workflow.
@@ -203,7 +203,7 @@ For laptop use, prefer Web/PWA initially instead of maintaining a separate Windo
 
 ## Frontend
 
-Flutter  
+Flutter
 Dart
 
 ## State Management
@@ -278,23 +278,23 @@ Use feature branches.
 
 Examples:
 
-feature/v0.1-foundation  
-feature/v0.2-inventory  
-feature/v0.3-customers-suppliers  
-feature/v0.4-purchases  
-feature/v0.5-vendor-ocr  
-feature/v0.6-pos  
-feature/v0.7-customer-credit  
-feature/v0.8-handwritten-ocr  
-feature/v0.9-accounting  
-feature/v0.10-reports  
+feature/v0.1-foundation
+feature/v0.2-inventory
+feature/v0.3-customers-suppliers
+feature/v0.4-purchases
+feature/v0.5-vendor-ocr
+feature/v0.6-pos
+feature/v0.7-customer-credit
+feature/v0.8-handwritten-ocr
+feature/v0.9-accounting
+feature/v0.10-reports
 feature/v0.11-offline-sync
 
 Bug branches:
 
-fix/stock-calculation  
-fix/customer-balance  
-fix/duplicate-sync  
+fix/stock-calculation
+fix/customer-balance
+fix/duplicate-sync
 fix/ocr-parser
 
 Refactoring:
@@ -311,38 +311,38 @@ docs/update-architecture
 
 For every feature:
 
-GitHub Issue  
-↓  
-Create Feature Branch  
-↓  
-Pull Latest Main  
-↓  
-AI Reads Project Documentation  
-↓  
-Implement Feature  
-↓  
-Run Formatter  
-↓  
-Static Analysis  
-↓  
-Run Tests  
-↓  
-Review Git Diff  
-↓  
-Commit  
-↓  
-Push Branch  
-↓  
-Create Pull Request  
-↓  
-GitHub Actions  
-↓  
-Review  
-↓  
-Merge to Main  
-↓  
-Update Changelog  
-↓  
+GitHub Issue
+↓
+Create Feature Branch
+↓
+Pull Latest Main
+↓
+AI Reads Project Documentation
+↓
+Implement Feature
+↓
+Run Formatter
+↓
+Static Analysis
+↓
+Run Tests
+↓
+Review Git Diff
+↓
+Commit
+↓
+Push Branch
+↓
+Create Pull Request
+↓
+GitHub Actions
+↓
+Review
+↓
+Merge to Main
+↓
+Update Changelog
+↓
 Tag Release When Appropriate
 
 Never automatically push large unreviewed changes directly to main.
@@ -353,11 +353,11 @@ Never automatically push large unreviewed changes directly to main.
 
 Before making changes, always inspect:
 
-README.md  
-PROJECT_SPEC.md  
-ARCHITECTURE.md  
-DATABASE_SCHEMA.md  
-ROADMAP.md  
+README.md
+PROJECT_SPEC.md
+ARCHITECTURE.md
+DATABASE_SCHEMA.md
+ROADMAP.md
 CHANGELOG.md
 
 Also inspect relevant feature documentation under:
@@ -404,10 +404,10 @@ Keep commits logically focused.
 
 Avoid commits such as:
 
-updated stuff  
-changes  
-final  
-fix  
+updated stuff
+changes
+final
+fix
 working
 
 Every commit should explain what changed.
@@ -420,17 +420,17 @@ Use semantic versioning.
 
 Examples:
 
-v0.1.0 Foundation  
-v0.2.0 Product + Inventory  
-v0.3.0 Customers + Suppliers  
-v0.4.0 Purchases  
-v0.5.0 Vendor OCR  
-v0.6.0 Sales / POS  
-v0.7.0 Customer Credit  
-v0.8.0 Handwritten Bill OCR  
-v0.9.0 Accounting  
-v0.10.0 Reports  
-v0.11.0 Offline Sync  
+v0.1.0 Foundation
+v0.2.0 Product + Inventory
+v0.3.0 Customers + Suppliers
+v0.4.0 Purchases
+v0.5.0 Vendor OCR
+v0.6.0 Sales / POS
+v0.7.0 Customer Credit
+v0.8.0 Handwritten Bill OCR
+v0.9.0 Accounting
+v0.10.0 Reports
+v0.11.0 Offline Sync
 v1.0.0 Production
 
 Create Git tags for meaningful releases.
@@ -529,18 +529,18 @@ deployment pipeline
 
 Flow:
 
-Push / Pull Request  
-↓  
-GitHub Actions  
-↓  
-Static Analysis  
-↓  
-Tests  
-↓  
-Database Tests  
-↓  
-Build  
-↓  
+Push / Pull Request
+↓
+GitHub Actions
+↓
+Static Analysis
+↓
+Tests
+↓
+Database Tests
+↓
+Build
+↓
 PASS / FAIL
 
 Do not claim CI passed unless the workflow actually passed.
@@ -601,16 +601,16 @@ Do not use microservices unless there is a proven need.
 
 Architecture:
 
-UI  
-↓  
-Controller / Riverpod Notifier  
-↓  
-Use Case / Application Service  
-↓  
-Repository  
-↓  
-Local / Remote Data Source  
-↓  
+UI
+↓
+Controller / Riverpod Notifier
+↓
+Use Case / Application Service
+↓
+Repository
+↓
+Local / Remote Data Source
+↓
 SQLite / Supabase / PostgreSQL
 
 The UI must never directly manipulate critical stock, payment, customer debt, or accounting database tables.
@@ -1093,16 +1093,16 @@ notes
 
 Customer ledger example:
 
-10 Sep 10:35 AM  
-Invoice #101  
+10 Sep 10:35 AM
+Invoice #101
 +₹15,000
 
-15 Sep 4:20 PM  
-Payment  
+15 Sep 4:20 PM
+Payment
 -₹5,000
 
-20 Sep 2:10 PM  
-Invoice #125  
+20 Sep 2:10 PM
+Invoice #125
 +₹8,000
 
 Outstanding ₹18,000

@@ -8,6 +8,8 @@ V0.1 establishes authentication, business/branch membership, server-enforced rol
 
 ## Repository
 
+Private source repository: [GnaneswarRaju/SriNidhi](https://github.com/GnaneswarRaju/SriNidhi). Foundation work: [FOUND-001](https://github.com/GnaneswarRaju/SriNidhi/issues/1).
+
 | Path | Responsibility |
 |---|---|
 | `app/` | Flutter client: Riverpod, go_router, Drift and Supabase |

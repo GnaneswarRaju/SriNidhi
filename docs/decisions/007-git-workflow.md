@@ -1,6 +1,6 @@
 # ADR-007: Git and GitHub workflow
 
-Accepted. Private repository `hardware-store-management`; stable reviewed `main`; feature branches per version and focused fix/docs branches. Git is initialized before application code. The initial documentation commit seeds main locally; all implementation follows on `feature/v0.1-foundation`.
+Accepted. Private repository [GnaneswarRaju/SriNidhi](https://github.com/GnaneswarRaju/SriNidhi); stable reviewed `main`; feature branches per version and focused fix/docs branches. Git was initialized before application code. The initial documentation commit seeded main locally; all implementation follows on `feature/v0.1-foundation`. The remote repository's initial README commit is retained in the feature history.
 
 Issue prefixes: FOUND, INV, STOCK, PARTY, PURCHASE, OCR, SALE, CREDIT, ACCOUNT, REPORT, SYNC, OPS, BUG. Title example: `FOUND-001: Establish authenticated branch workspace`. Labels: type, area, priority; milestones: V0.1–V1.0. A slice carries acceptance, permissions, migration, design, validation and rollback evidence.
 

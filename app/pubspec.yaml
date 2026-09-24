@@ -1,0 +1,31 @@
+name: hardware_store
+description: Hardware store management — authenticated branch workspace.
+publish_to: none
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.13.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_riverpod: ^3.4.3
+  go_router: ^18.0.1
+  supabase_flutter: ^2.17.2
+  flutter_secure_storage: ^11.2.0
+  drift: ^2.35.0
+  drift_flutter: ^0.3.1
+  intl: any
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  build_runner: ^2.16.1
+  drift_dev: ^2.35.0
+
+flutter:
+  uses-material-design: true
+  generate: true
