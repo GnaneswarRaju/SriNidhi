@@ -1,0 +1,20 @@
+name: Feature slice
+description: A bounded milestone with verifiable acceptance criteria
+title: "FOUND-001: "
+body:
+  - type: textarea
+    id: outcome
+    attributes:
+      label: User outcome and milestone
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria including data, permissions and tests
+    validations:
+      required: true
+  - type: textarea
+    id: implications
+    attributes:
+      label: Migration, offline, design and rollback implications
