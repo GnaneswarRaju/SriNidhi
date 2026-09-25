@@ -44,6 +44,8 @@ psql postgresql://postgres:postgres@127.0.0.1:54322/postgres -v ON_ERROR_STOP=1 
 
 The database test transaction rolls back its own fixtures. Do not run tests on production. For a linked development project, first inspect schema and migration history, then use `supabase link` and review `supabase db push --dry-run` before applying migrations. Do not apply blindly to an existing schema.
 
+Keep `[auth].enable_signup = false` and `[auth.email].enable_signup = true`. The latter CLI flag enables the email provider, including existing-user login; it does not override the global registration restriction. CI verifies the effective `/auth/v1/settings` values before testing login. The hosted development project uses the same effective settings.
+
 Database CI also runs `scripts/verify-live-auth.mjs` against its disposable local stack. It creates an automatically confirmed test account with a random password, checks real password login/refresh/sign-out and branch access through PostgREST, then discards the stack. It accepts only a loopback API URL and reads keys from a temporary `supabase status --output json` file that CI removes. Never commit or upload that file. This verifies Auth and API integration; hosted-project setup and browser session persistence are separate acceptance checks.
 
 ## Provisioning

@@ -52,6 +52,10 @@ async function main() {
     return result.data;
   }
 
+  const settings = await success('Read Auth configuration', '/auth/v1/settings');
+  requireCondition(settings?.disable_signup === true && settings?.external?.email === true,
+    'Auth must enable email login while disabling public signup.');
+
   const password = `Aa1!${randomBytes(30).toString('base64url')}`;
   const email = `foundation-${randomUUID()}@example.com`;
   const owner = await success('Create disposable owner', '/auth/v1/admin/users', {
@@ -62,7 +66,7 @@ async function main() {
   const rejected = await request('Reject invalid password', '/auth/v1/token?grant_type=password', {
     method: 'POST', body: { email, password: `${password}-incorrect` },
   });
-  requireCondition([400, 401, 422].includes(rejected.status) &&
+  requireCondition(rejected.status === 400 &&
     (rejected.data?.error_code ?? rejected.data?.code) === 'invalid_credentials' &&
     !rejected.data?.access_token,
   `Invalid password check failed (HTTP ${rejected.status}).`);

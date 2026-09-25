@@ -13,9 +13,9 @@
 
 All exposed tables use RLS. Authenticated clients receive SELECT only. Audit access is restricted to owner/admin/manager in the relevant branch. No anonymous table privileges. A private helper checks current membership and branch activity; its search_path is fixed and execution grants explicit. `my_branch_memberships()` exposes only the caller's active branches/roles. Provisioning requires the SQL administration path and is not embedded in Flutter.
 
-## Planned normalized entities (not migrated yet)
-
 Hosted development migration history: `20260925032304_foundation.sql` and `20260925032910_harden_foundation_access.sql`. The first migration was renamed from `20260924000100` without SQL changes to match the version assigned by its first hosted application; it had not shipped in a release. The hardening migration adds actor/creator/membership foreign-key indexes and revokes client execution of Supabase's pre-existing `rls_auto_enable()` event-trigger function when present.
+
+## Planned normalized entities (not migrated yet)
 
 Catalogue: products, categories, brands, units, unit_conversions, product_aliases, product_prices. Products carry SKU/barcode, category/subcategory, HSN/GST, base/purchase/sale units, exact conversion ratios, fixed prices, reorder values, rack, supplier and active status.
 

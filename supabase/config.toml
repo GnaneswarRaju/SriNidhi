@@ -26,7 +26,9 @@ additional_redirect_urls = []
 enable_signup = false
 
 [auth.email]
-enable_signup = false
+# The CLI maps this provider flag to external_email_enabled (including login).
+# Global auth.enable_signup=false still blocks account registration.
+enable_signup = true
 enable_confirmations = true
 
 [analytics]
