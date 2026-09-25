@@ -36,4 +36,6 @@ Without Supabase configuration the app shows a setup screen, never a simulated a
 
 ## Status
 
+The development web app is connected to the SriNidhi Supabase project. Real Owner sign-in, branch/role loading, reload session restoration and sign-out have been verified. Public registration is disabled; staff access is provisioned through trusted administration. With the configured release build, run `node scripts/serve-preview.mjs` from the repository root and open `http://127.0.0.1:3000`.
+
 See [the verification report](docs/testing/v0.1-verification.md) for checks actually executed, external dependencies and release blockers. An authored CI workflow is not evidence of a passing CI run.
