@@ -44,6 +44,8 @@ psql postgresql://postgres:postgres@127.0.0.1:54322/postgres -v ON_ERROR_STOP=1 
 
 The database test transaction rolls back its own fixtures. Do not run tests on production. For a linked development project, first inspect schema and migration history, then use `supabase link` and review `supabase db push --dry-run` before applying migrations. Do not apply blindly to an existing schema.
 
+Database CI also runs `scripts/verify-live-auth.mjs` against its disposable local stack. It creates an automatically confirmed test account with a random password, checks real password login/refresh/sign-out and branch access through PostgREST, then discards the stack. It accepts only a loopback API URL and reads keys from a temporary `supabase status --output json` file that CI removes. Never commit or upload that file. This verifies Auth and API integration; hosted-project setup and browser session persistence are separate acceptance checks.
+
 ## Provisioning
 
 Create/invite the first user through Supabase Auth administration. Keep sign-up disabled. Copy the resulting auth user UUID, then run `supabase/admin/provision_first_store.sql` using psql variables against the intended development database. This transaction creates one business, one branch, one membership and one owner grant. The role trigger writes an audit entry. The script is not a public RPC and does not embed a service key or password in Flutter.
