@@ -9,6 +9,8 @@
 - Add business/branch membership, six branch roles, RLS, an immutable audit trail and trusted provisioning migration.
 - Add sanitized diagnostics, configuration validation, security tests, accessibility checks, Figma references and rendered previews.
 - Add a real Supabase Auth/PostgREST integration check for password login, refresh, branch access, membership revocation and sign-out in disposable CI.
+- Connect the SriNidhi development backend, apply the foundation migrations, provision the first store owner and disable public sign-up.
+- Harden the existing RLS event-trigger function grants and add missing foreign-key indexes. Align the unreleased foundation migration filename with its first hosted application timestamp.
 - Document posting invariants, OCR human review, durable sync, backups, recovery, analytics and release gates.
 - Foundation implementation and verification are tracked in `docs/testing/v0.1-verification.md`.
 

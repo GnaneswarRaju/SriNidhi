@@ -62,8 +62,10 @@ async function main() {
   const rejected = await request('Reject invalid password', '/auth/v1/token?grant_type=password', {
     method: 'POST', body: { email, password: `${password}-incorrect` },
   });
-  requireCondition(rejected.status === 400 && !rejected.data?.access_token,
-    'An invalid password was not rejected by Auth.');
+  requireCondition([400, 401, 422].includes(rejected.status) &&
+    (rejected.data?.error_code ?? rejected.data?.code) === 'invalid_credentials' &&
+    !rejected.data?.access_token,
+  `Invalid password check failed (HTTP ${rejected.status}).`);
 
   let session = await success('Password sign-in', '/auth/v1/token?grant_type=password', {
     method: 'POST', body: { email, password },
@@ -142,7 +144,8 @@ async function main() {
   const signup = await request('Reject public signup', '/auth/v1/signup', {
     method: 'POST', body: { email: `disabled-${randomUUID()}@example.com`, password },
   });
-  requireCondition(!signup.ok && signup.data?.code === 'signup_disabled',
+  requireCondition(!signup.ok &&
+    (signup.data?.error_code ?? signup.data?.code) === 'signup_disabled',
     'Public signup must remain disabled.');
 
   await success('Sign out current session', '/auth/v1/logout?scope=local', {

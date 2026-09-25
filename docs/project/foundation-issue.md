@@ -6,4 +6,4 @@ Outcome: a configured store employee can sign in, view server-authorized branche
 
 Acceptance: auth adapter/controller, route guards, backend RLS/roles, user-scoped persistent preference, responsive UI, privacy-safe logs, migrations, tests, docs, Figma references, feature commit, issue-linked PR and passing CI.
 
-Database: `20260924000100_foundation.sql`. Branch: `feature/v0.1-foundation`. No business transactions, OCR calls or analytics in this slice. Rollback: prior client; forward database correction. See verification report for actual completion evidence and unresolved external gates.
+Database: `20260925032304_foundation.sql` and `20260925032910_harden_foundation_access.sql`, applied to the SriNidhi development project. The first owner is provisioned for Sri Nidhi Hardware / Main branch. Branch: `feature/v0.1-foundation`. No business transactions, OCR calls or analytics in this slice. Rollback: prior client; forward database correction. See verification report for actual completion evidence and unresolved external gates.

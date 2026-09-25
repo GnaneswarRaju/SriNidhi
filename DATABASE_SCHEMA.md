@@ -15,6 +15,8 @@ All exposed tables use RLS. Authenticated clients receive SELECT only. Audit acc
 
 ## Planned normalized entities (not migrated yet)
 
+Hosted development migration history: `20260925032304_foundation.sql` and `20260925032910_harden_foundation_access.sql`. The first migration was renamed from `20260924000100` without SQL changes to match the version assigned by its first hosted application; it had not shipped in a release. The hardening migration adds actor/creator/membership foreign-key indexes and revokes client execution of Supabase's pre-existing `rls_auto_enable()` event-trigger function when present.
+
 Catalogue: products, categories, brands, units, unit_conversions, product_aliases, product_prices. Products carry SKU/barcode, category/subcategory, HSN/GST, base/purchase/sale units, exact conversion ratios, fixed prices, reorder values, rack, supplier and active status.
 
 Parties: customers, customer_representatives, suppliers. Sales reference representatives with a composite customer constraint. Credit limits, periods, addresses and GSTIN are protected personal/business data.
