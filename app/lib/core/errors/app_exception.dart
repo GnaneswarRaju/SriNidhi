@@ -4,6 +4,8 @@ enum ErrorCode {
   network,
   database,
   validation,
+  duplicate,
+  conflict,
   inventory,
   accounting,
   ocr,

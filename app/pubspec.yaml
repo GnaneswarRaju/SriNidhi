@@ -1,7 +1,7 @@
 name: hardware_store
 description: Hardware store management — authenticated branch workspace.
 publish_to: none
-version: 0.1.0+1
+version: 0.2.0-dev.1+2
 
 environment:
   sdk: ^3.13.4

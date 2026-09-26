@@ -18,7 +18,13 @@ Each future posting RPC acquires locks in deterministic product/account order; v
 
 Business membership and explicit branch roles are separate. A role on branch A grants nothing on branch B. OWNER/ADMIN/MANAGER/CASHIER/STOCK_MANAGER/ACCOUNTANT are database-enforced enums. V0.1 allows only read access via RLS and a membership RPC; provisioning is a trusted administration operation. No public sign-up or client-side role mutation is exposed.
 
-## Cross-cutting concerns
+## Catalogue slice
+
+`ProductsScreen / ProductForm → ProductRepository → Supabase RPC` uses Riverpod for loading and session invalidation. Pure domain validation compares decimal strings as BigInt minor units. PostgreSQL remains authoritative. The business-wide catalogue is accessed through an authorized selected branch; maintainers are OWNER/ADMIN/MANAGER/STOCK_MANAGER, while other assigned roles can read. Base units are immutable. Normalized categories/brands are resolved in the same transaction as product and audit writes.
+
+Creates use a stable UUID and a private original-payload record; equal retries return the current product without overwriting later edits. Advisory transaction locks serialize creates; row/version checks reject competing edits. The client retains its request ID and locks the draft after an uncertain network response. Search uses literal case-insensitive prefixes and `(name_key,id)` keyset pages of 30 plus a sentinel. Product data is online-only and not persisted to Drift; offline draft/outbox work remains V0.11. Catalogue changes never post stock or money.
+
+## Shared behavior
 
 Structured exceptions carry stable error codes. Logging accepts an explicit allowlist of context IDs and never serializes SDK error bodies, request payloads or credentials. UI text lives in ARB files; English ships first, Telugu/Hindi translation remains a tracked gate. Responsive breakpoints: compact below 600, medium 600–1023, expanded 1024 and above. Keyboard focus, labels, 48 px controls and text scaling are part of acceptance.
 

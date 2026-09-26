@@ -1,6 +1,16 @@
 # Changelog
 
-## Unreleased — 0.1.0 Foundation
+## Unreleased — 0.2.0-dev.1 Catalogue
+
+- Add product creation, editing, deactivation/reactivation, prefix search and keyset pagination with responsive navigation and forms.
+- Normalize business categories/brands and provide immutable base units, optional barcodes/HSN/MRP, exact selling prices and reorder thresholds.
+- Enforce roles in atomic Supabase functions, reject direct client writes, duplicate identifiers and stale edits, and audit successful mutations.
+- Preserve create request identity across retries and compare money/quantities without floating-point arithmetic.
+- Add database and widget contracts plus real Auth/PostgREST concurrent-write integration coverage.
+- Use local responsive design previews with explicit user approval while Figma Starter tool quota blocks catalogue design sync.
+- V0.2 inventory posting and low-stock evaluation remain unimplemented.
+
+## 0.1.0 Foundation — merged 2026-09-26, not released
 
 - Establish project specification, architecture, schema contracts and milestone roadmap.
 - Define issue/PR workflow and Flutter/database CI.

@@ -16,11 +16,12 @@ class WorkspaceShell extends ConsumerWidget {
     final l = AppLocalizations.of(context);
     final workspace = ref.watch(workspaceControllerProvider);
     final auth = ref.watch(authControllerProvider);
-    const paths = ['/', '/workspace', '/settings'];
-    final index = paths.indexOf(path).clamp(0, 2);
-    final labels = [l.overview, l.workspace, l.settings];
+    const paths = ['/', '/products', '/workspace', '/settings'];
+    final index = paths.indexOf(path).clamp(0, paths.length - 1);
+    final labels = [l.overview, l.products, l.workspace, l.settings];
     const icons = [
       Icons.dashboard_outlined,
+      Icons.inventory_2_outlined,
       Icons.storefront_outlined,
       Icons.settings_outlined,
     ];
@@ -77,7 +78,7 @@ class WorkspaceShell extends ConsumerWidget {
                         ? NavigationRailLabelType.none
                         : NavigationRailLabelType.all,
                     destinations: [
-                      for (var i = 0; i < 3; i++)
+                      for (var i = 0; i < paths.length; i++)
                         NavigationRailDestination(
                           icon: Icon(icons[i]),
                           label: Text(labels[i]),
@@ -93,7 +94,7 @@ class WorkspaceShell extends ConsumerWidget {
                   selectedIndex: index,
                   onDestinationSelected: navigate,
                   destinations: [
-                    for (var i = 0; i < 3; i++)
+                    for (var i = 0; i < paths.length; i++)
                       NavigationDestination(
                         icon: Icon(icons[i]),
                         label: labels[i],

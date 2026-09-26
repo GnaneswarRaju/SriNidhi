@@ -3,7 +3,7 @@ import 'dart:developer' as developer;
 
 import '../errors/app_exception.dart';
 
-enum LogModule { auth, workspace, storage, application }
+enum LogModule { auth, workspace, storage, application, products }
 
 enum LogOperation {
   signIn,
@@ -12,6 +12,8 @@ enum LogOperation {
   savePreference,
   bootstrap,
   frameworkError,
+  loadProducts,
+  saveProduct,
 }
 
 /// Closed fields prevent arbitrary SDK errors, passwords or invoice payloads

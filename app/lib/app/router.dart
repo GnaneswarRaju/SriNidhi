@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../features/auth/presentation/sign_in_screen.dart';
 import '../features/dashboard/presentation/overview_screen.dart';
+import '../features/products/presentation/products_screen.dart';
 import '../features/settings/presentation/settings_screen.dart';
 import '../features/workspace/presentation/workspace_screen.dart';
 import '../shared/presentation/foundation_screens.dart';
@@ -50,6 +51,7 @@ final routerProvider = Provider<GoRouter>((ref) {
             WorkspaceShell(path: state.uri.path, child: child),
         routes: [
           GoRoute(path: '/', builder: (_, _) => const OverviewScreen()),
+          GoRoute(path: '/products', builder: (_, _) => const ProductsScreen()),
           GoRoute(
             path: '/workspace',
             builder: (_, _) => const WorkspaceScreen(),

@@ -19,7 +19,13 @@ Serve one hardware store initially; retain business and branch identity from the
 
 Configured users can sign in/out, restore a session, load authorized branches and roles, select a branch, navigate Overview/Workspace/Settings responsively, and receive actionable loading/error/empty states. Unconfigured installs explain setup. Signed-out users cannot enter protected routes. Branch access is checked by PostgreSQL. Local storage contains only non-sensitive foundation preferences; transactional offline writes start in V0.11.
 
-## Modules
+## V0.2 first slice acceptance
+
+Authorized maintainers can add, edit, deactivate and reactivate business-wide products from the selected branch. Every assigned branch role can search by name/SKU/barcode prefix, page through results and view details. Required name/SKU/base unit/selling price, optional barcode/category/brand/HSN/MRP/description, and a default reorder threshold are validated in the client and server. No stock quantity is implied by the threshold. Duplicate SKU/barcode, stale edits, permission loss and uncertain saves have explicit outcomes. Base units cannot change after creation.
+
+This slice does not complete V0.2: purchase/sale unit conversions, opening stock, stock movements/balances, adjustments and low-stock evaluation remain separate gates. The user approved local design previews on 2026-09-26 because Figma Starter tool quota was exhausted; synchronize the catalogue to Figma when available.
+
+## Module plan
 
 | Version | Modules |
 |---|---|

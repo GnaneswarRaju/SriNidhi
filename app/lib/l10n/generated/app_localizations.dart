@@ -253,7 +253,7 @@ abstract class AppLocalizations {
   /// No description provided for @foundationLabel.
   ///
   /// In en, this message translates to:
-  /// **'FOUNDATION · V0.1'**
+  /// **'YOUR STORE · YOUR WORKSPACE'**
   String get foundationLabel;
 
   /// No description provided for @overviewTitle.
@@ -367,13 +367,13 @@ abstract class AppLocalizations {
   /// No description provided for @nextTitle.
   ///
   /// In en, this message translates to:
-  /// **'Next: products & inventory'**
+  /// **'Next: stock movements'**
   String get nextTitle;
 
   /// No description provided for @nextBody.
   ///
   /// In en, this message translates to:
-  /// **'The next milestone adds your catalogue, opening stock, a stock movement ledger and low-stock alerts.'**
+  /// **'Your product catalogue is available in Products. Opening stock, a stock movement ledger and low-stock alerts are coming next.'**
   String get nextBody;
 
   /// No description provided for @workspaceSubtitle.
@@ -495,6 +495,402 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Return to overview'**
   String get returnHome;
+
+  /// No description provided for @products.
+  ///
+  /// In en, this message translates to:
+  /// **'Products'**
+  String get products;
+
+  /// No description provided for @productsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your product catalogue'**
+  String get productsTitle;
+
+  /// No description provided for @productsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Maintain product details shared across your business. Stock quantities will be added in a later update.'**
+  String get productsSubtitle;
+
+  /// No description provided for @addProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Add product'**
+  String get addProduct;
+
+  /// No description provided for @editProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit product'**
+  String get editProduct;
+
+  /// No description provided for @productDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Product details'**
+  String get productDetails;
+
+  /// No description provided for @searchProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by name, SKU or barcode prefix'**
+  String get searchProducts;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @includeInactive.
+  ///
+  /// In en, this message translates to:
+  /// **'Include inactive products'**
+  String get includeInactive;
+
+  /// No description provided for @emptyProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'Your catalogue starts here'**
+  String get emptyProducts;
+
+  /// No description provided for @emptyProductsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Add your first product with its selling unit and price.'**
+  String get emptyProductsBody;
+
+  /// No description provided for @emptyReadOnlyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask your store administrator to add the first product.'**
+  String get emptyReadOnlyBody;
+
+  /// No description provided for @noProductsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No matching products'**
+  String get noProductsFound;
+
+  /// No description provided for @noProductsFoundBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Try a different prefix or include inactive products.'**
+  String get noProductsFoundBody;
+
+  /// No description provided for @productsError.
+  ///
+  /// In en, this message translates to:
+  /// **'We could not load products. Check your connection and branch access, then try again.'**
+  String get productsError;
+
+  /// No description provided for @previousPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous'**
+  String get previousPage;
+
+  /// No description provided for @nextPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get nextPage;
+
+  /// No description provided for @refreshProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'Refresh products'**
+  String get refreshProducts;
+
+  /// No description provided for @edit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
+  /// No description provided for @viewDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'View details'**
+  String get viewDetails;
+
+  /// No description provided for @activeProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get activeProduct;
+
+  /// No description provided for @inactiveProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Inactive'**
+  String get inactiveProduct;
+
+  /// No description provided for @productName.
+  ///
+  /// In en, this message translates to:
+  /// **'Product name'**
+  String get productName;
+
+  /// No description provided for @sku.
+  ///
+  /// In en, this message translates to:
+  /// **'SKU'**
+  String get sku;
+
+  /// No description provided for @barcode.
+  ///
+  /// In en, this message translates to:
+  /// **'Barcode (optional)'**
+  String get barcode;
+
+  /// No description provided for @category.
+  ///
+  /// In en, this message translates to:
+  /// **'Category (optional)'**
+  String get category;
+
+  /// No description provided for @brand.
+  ///
+  /// In en, this message translates to:
+  /// **'Brand (optional)'**
+  String get brand;
+
+  /// No description provided for @baseUnit.
+  ///
+  /// In en, this message translates to:
+  /// **'Base unit'**
+  String get baseUnit;
+
+  /// No description provided for @baseUnitNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the smallest unit you sell or count. This cannot be changed after saving.'**
+  String get baseUnitNote;
+
+  /// No description provided for @hsnCode.
+  ///
+  /// In en, this message translates to:
+  /// **'HSN code (optional)'**
+  String get hsnCode;
+
+  /// No description provided for @salePrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Selling price (₹)'**
+  String get salePrice;
+
+  /// No description provided for @mrp.
+  ///
+  /// In en, this message translates to:
+  /// **'MRP (₹, optional)'**
+  String get mrp;
+
+  /// No description provided for @reorderQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Reorder threshold'**
+  String get reorderQuantity;
+
+  /// No description provided for @reorderNote.
+  ///
+  /// In en, this message translates to:
+  /// **'A default threshold for future low-stock alerts. This does not add stock.'**
+  String get reorderNote;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description (optional)'**
+  String get description;
+
+  /// No description provided for @activeProductNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Inactive products stay in your records and can be reactivated.'**
+  String get activeProductNote;
+
+  /// No description provided for @saveProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Save product'**
+  String get saveProduct;
+
+  /// No description provided for @savingProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Saving…'**
+  String get savingProduct;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get close;
+
+  /// No description provided for @requiredField.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a value.'**
+  String get requiredField;
+
+  /// No description provided for @invalidSku.
+  ///
+  /// In en, this message translates to:
+  /// **'Use letters, numbers, dots, slashes, underscores or hyphens. Start with a letter or number.'**
+  String get invalidSku;
+
+  /// No description provided for @invalidBarcode.
+  ///
+  /// In en, this message translates to:
+  /// **'Use letters, numbers, dots, slashes, underscores or hyphens.'**
+  String get invalidBarcode;
+
+  /// No description provided for @invalidHsn.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter 4 to 8 digits.'**
+  String get invalidHsn;
+
+  /// No description provided for @invalidPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a non-negative amount with up to 12 whole digits and 2 decimal places.'**
+  String get invalidPrice;
+
+  /// No description provided for @invalidMrp.
+  ///
+  /// In en, this message translates to:
+  /// **'MRP must be at least the selling price.'**
+  String get invalidMrp;
+
+  /// No description provided for @invalidQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a non-negative quantity with up to 14 whole digits and 6 decimal places.'**
+  String get invalidQuantity;
+
+  /// No description provided for @wholeQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'This unit requires a whole-number quantity.'**
+  String get wholeQuantity;
+
+  /// No description provided for @productSaveError.
+  ///
+  /// In en, this message translates to:
+  /// **'Saving could not be confirmed. Keep these details unchanged and try again, or close and refresh the catalogue before editing them.'**
+  String get productSaveError;
+
+  /// No description provided for @productDuplicate.
+  ///
+  /// In en, this message translates to:
+  /// **'That SKU or barcode is already used. Enter a unique value.'**
+  String get productDuplicate;
+
+  /// No description provided for @productConflict.
+  ///
+  /// In en, this message translates to:
+  /// **'This product or request has changed. Close this form and refresh the catalogue before trying again.'**
+  String get productConflict;
+
+  /// No description provided for @productForbidden.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account cannot save products in this branch. Ask your store administrator to check your access.'**
+  String get productForbidden;
+
+  /// No description provided for @productInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Some product details were rejected. Check the fields and try again.'**
+  String get productInvalid;
+
+  /// No description provided for @unitPcs.
+  ///
+  /// In en, this message translates to:
+  /// **'Piece (PCS)'**
+  String get unitPcs;
+
+  /// No description provided for @unitBox.
+  ///
+  /// In en, this message translates to:
+  /// **'Box (BOX)'**
+  String get unitBox;
+
+  /// No description provided for @unitPack.
+  ///
+  /// In en, this message translates to:
+  /// **'Pack (PACK)'**
+  String get unitPack;
+
+  /// No description provided for @unitBag.
+  ///
+  /// In en, this message translates to:
+  /// **'Bag (BAG)'**
+  String get unitBag;
+
+  /// No description provided for @unitSet.
+  ///
+  /// In en, this message translates to:
+  /// **'Set (SET)'**
+  String get unitSet;
+
+  /// No description provided for @unitRoll.
+  ///
+  /// In en, this message translates to:
+  /// **'Roll (ROLL)'**
+  String get unitRoll;
+
+  /// No description provided for @unitKg.
+  ///
+  /// In en, this message translates to:
+  /// **'Kilogram (KG)'**
+  String get unitKg;
+
+  /// No description provided for @unitG.
+  ///
+  /// In en, this message translates to:
+  /// **'Gram (G)'**
+  String get unitG;
+
+  /// No description provided for @unitM.
+  ///
+  /// In en, this message translates to:
+  /// **'Metre (M)'**
+  String get unitM;
+
+  /// No description provided for @unitCm.
+  ///
+  /// In en, this message translates to:
+  /// **'Centimetre (CM)'**
+  String get unitCm;
+
+  /// No description provided for @unitFt.
+  ///
+  /// In en, this message translates to:
+  /// **'Foot (FT)'**
+  String get unitFt;
+
+  /// No description provided for @unitL.
+  ///
+  /// In en, this message translates to:
+  /// **'Litre (L)'**
+  String get unitL;
+
+  /// No description provided for @unitMl.
+  ///
+  /// In en, this message translates to:
+  /// **'Millilitre (ML)'**
+  String get unitMl;
 }
 
 class _AppLocalizationsDelegate
