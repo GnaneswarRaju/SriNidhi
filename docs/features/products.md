@@ -16,6 +16,8 @@ Business-wide product details are accessed through an active branch membership. 
 
 Forms show validation, duplicate, conflict, permission and network outcomes. Network failures retain the request UUID and lock input until retry or close/refresh, avoiding accidental changed-payload retries. Read-only users can inspect full details. Loading failures remove old content and offer retry. Account changes invalidate the catalogue and dismiss the form. No product payload or SDK response is logged.
 
+Catalogue requests time out after 20 seconds. A timed-out write may still commit on the server, so it follows the same uncertain-save/retry rules; client timeout is never treated as rollback. Save diagnostics include only the allowlisted product UUID correlation ID, operation and stable error code.
+
 ## Explicit limits
 
 This is online-only maintenance. There is no durable draft/outbox, camera barcode scanning, bulk import, stock balance, purchase/sale conversion, tax calculation, price history, stock cost, sales or accounting posting. Catalogue prices will be copied into immutable document lines by future posting modules. Reorder threshold only stores a default for future alerts. No analytics are enabled.
