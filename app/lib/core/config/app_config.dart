@@ -4,7 +4,7 @@ class AppConfig {
   const AppConfig({
     this.supabaseUrl = '',
     this.supabaseKey = '',
-    this.version = '0.1.0-dev',
+    this.version = '0.2.0-dev.1',
     this.gitSha = 'local',
     this.startupFailed = false,
   });
@@ -12,7 +12,7 @@ class AppConfig {
   factory AppConfig.environment() => const AppConfig(
     supabaseUrl: String.fromEnvironment('SUPABASE_URL'),
     supabaseKey: String.fromEnvironment('SUPABASE_ANON_KEY'),
-    version: String.fromEnvironment('APP_VERSION', defaultValue: '0.1.0-dev'),
+    version: String.fromEnvironment('APP_VERSION', defaultValue: '0.2.0-dev.1'),
     gitSha: String.fromEnvironment('GIT_SHA', defaultValue: 'local'),
   );
 

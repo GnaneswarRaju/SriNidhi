@@ -118,6 +118,60 @@ async function main() {
     });
   requireCondition(escalation.status === 403, 'A client was allowed to change roles.');
 
+  const productId = randomUUID();
+  const productData = { name: 'Integration product', sku: 'AUTH-001', barcode: '190001',
+    category: 'Fixtures', brand: 'Test brand', base_unit: 'KG', description: '',
+    hsn_code: '', sale_price: '999999999999.99', mrp: '', reorder_quantity: '1.123456', active: true };
+  const saveProduct = (version, data = productData, id = productId, target = branchId) =>
+    request('Save catalogue product', '/rest/v1/rpc/save_catalogue_product', {
+      method: 'POST', token: session.access_token,
+      body: { p_branch_id: target, p_product_id: id, p_expected_version: version, p_data: data },
+    });
+  const listProducts = (extra = {}) => request('Read catalogue', '/rest/v1/rpc/catalogue_products', {
+    method: 'POST', token: session.access_token, body: { p_branch_id: branchId, ...extra },
+  });
+  const creates = await Promise.all([saveProduct(null), saveProduct(null)]);
+  requireCondition(creates.every(r => r.ok && r.data?.id === productId && r.data?.version === 1 &&
+    r.data?.sale_price === '999999999999.99' && r.data?.reorder_quantity === '1.123456'),
+    'Concurrent create/retry did not return one exact product.');
+  let catalogue = await listProducts({ p_query: 'auth-' });
+  requireCondition(catalogue.ok && catalogue.data.length === 1 && catalogue.data[0].id === productId,
+    'Case-insensitive SKU search failed.');
+  const duplicate = await saveProduct(null, productData, randomUUID());
+  requireCondition(duplicate.status === 409 && duplicate.data?.code === '23505', 'Duplicate SKU was accepted.');
+  const foreignSave = await saveProduct(null, productData, randomUUID(), foreignBranchId);
+  requireCondition(foreignSave.status === 403, 'Catalogue write reached an unauthorized branch.');
+  const edits = await Promise.all([
+    saveProduct(1, { ...productData, sale_price: '10.01' }),
+    saveProduct(1, { ...productData, sale_price: '20.02' }),
+  ]);
+  requireCondition(edits.filter(r => r.ok && r.data?.version === 2).length === 1 &&
+    edits.filter(r => !r.ok && r.data?.code === 'P0001').length === 1,
+    'Concurrent edits did not reject the stale version.');
+  const winner = edits.find(r => r.ok).data;
+  const retryCreate = await saveProduct(null);
+  requireCondition(retryCreate.ok && retryCreate.data.version === 2 && retryCreate.data.sale_price === winner.sale_price,
+    'A retried create overwrote a later edit.');
+  const deactivated = await saveProduct(2, { ...productData, sale_price: winner.sale_price, active: false });
+  requireCondition(deactivated.ok && deactivated.data.version === 3, 'Deactivation failed.');
+  requireCondition((await listProducts()).data.length === 0 &&
+    (await listProducts({ p_show_inactive: true })).data.length === 1, 'Inactive filter failed.');
+  const directWrite = await request('Reject direct product write', `/rest/v1/products?id=eq.${productId}`, {
+    method: 'PATCH', token: session.access_token, body: { sale_price: 0 },
+  });
+  requireCondition(directWrite.status === 403, 'A client bypassed the atomic product RPC.');
+  const audit = await success('Count product audit records',
+    `/rest/v1/audit_logs?entity_id=eq.${productId}&select=action`, { admin: true });
+  requireCondition(audit.length === 3 && audit.filter(row => row.action === 'PRODUCT_CREATE').length === 1,
+    'Product retries or failed writes duplicated audit records.');
+
+  const roleRoute = `/rest/v1/user_roles?user_id=eq.${owner.id}&branch_id=eq.${branchId}`;
+  await success('Set disposable cashier role', roleRoute, { method: 'PATCH', admin: true, body: { role: 'CASHIER' } });
+  requireCondition((await listProducts({ p_show_inactive: true })).data.length === 1 &&
+    (await saveProduct(3)).status === 403, 'Cashier catalogue permission failed.');
+  await success('Restore disposable owner role', roleRoute, { method: 'PATCH', admin: true, body: { role: 'OWNER' } });
+  console.log('PASS: real catalogue RPCs, exact decimals, concurrent create/edit, retries, search, deactivation and role enforcement.');
+
   // Persist/reuse the refresh token as a fresh client would after a restart.
   // Browser secure storage itself is checked separately in the Flutter app.
   session = await success('Restore through refresh token', '/auth/v1/token?grant_type=refresh_token', {
@@ -135,6 +189,8 @@ async function main() {
   });
   requireCondition((await memberships(session.access_token)).length === 0,
     'An existing valid session retained a revoked membership.');
+  requireCondition((await listProducts()).status === 403 && (await saveProduct(3)).status === 403,
+    'A revoked membership retained catalogue RPC access.');
   await success('Restore membership', membershipRoute, {
     method: 'PATCH', admin: true, body: { active: true },
   });

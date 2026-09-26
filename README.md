@@ -1,10 +1,12 @@
 # Sri Nidhi · Hardware Store Management
 
-A Flutter application for a hardware store, backed by Supabase PostgreSQL and a local Drift database. This repository begins with **V0.1 Foundation**. Inventory, POS, credit, OCR and accounting are deliberately delivered in later vertical slices.
+A Flutter application for a hardware store, backed by Supabase PostgreSQL and a local Drift database. **V0.1 Foundation is merged**; **V0.2 begins with the product catalogue**. Inventory posting, POS, credit, OCR and accounting follow in separate vertical slices.
 
 ## Current scope
 
 V0.1 establishes authentication, business/branch membership, server-enforced roles, responsive navigation, theme, localization infrastructure, structured diagnostics, local persistence, migrations and CI. It does not post business transactions or claim to be ready for store operations.
+
+The catalogue adds product creation, editing, deactivation, prefix search and pagination. Prices and quantities use exact decimals; retries cannot create duplicates, and competing edits require refresh. See [INV-001](https://github.com/GnaneswarRaju/SriNidhi/issues/3) and the [catalogue contract](docs/features/products.md). Opening stock and stock balances are not implemented yet.
 
 ## Repository
 
@@ -28,11 +30,13 @@ Without Supabase configuration the app shows a setup screen, never a simulated a
 
 ## Workflow
 
-`main` is the reviewed integration branch. Work uses `feature/v0.1-foundation`, linked issues, Conventional Commits and pull requests. No significant implementation is pushed directly to `main`. See [GitHub workflow](docs/decisions/007-git-workflow.md).
+`main` is the reviewed integration branch. Current work uses `feature/v0.2-inventory`, linked issues, Conventional Commits and pull requests. No significant implementation is pushed directly to `main`. See [GitHub workflow](docs/decisions/007-git-workflow.md).
 
 ## Design
 
 [Figma foundation](https://www.figma.com/design/cKRnPv2HAhhmYjsZ8iWPoW). Design decisions and implementation parity are tracked in [design foundation](docs/design/foundation.md).
+
+The user approved [local catalogue previews](docs/design/catalogue-preview.html) while the Figma Starter tool quota is exhausted. Figma catalogue sync remains pending; see [catalogue design notes](docs/design/catalogue.md).
 
 ## Status
 

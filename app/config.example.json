@@ -1,6 +1,6 @@
 {
   "SUPABASE_URL": "",
   "SUPABASE_ANON_KEY": "",
-  "APP_VERSION": "0.1.0-dev",
+  "APP_VERSION": "0.2.0-dev.1",
   "GIT_SHA": "local"
 }

@@ -15,9 +15,19 @@ All exposed tables use RLS. Authenticated clients receive SELECT only. Audit acc
 
 Hosted development migration history: `20260925032304_foundation.sql` and `20260925032910_harden_foundation_access.sql`. The first migration was renamed from `20260924000100` without SQL changes to match the version assigned by its first hosted application; it had not shipped in a release. The hardening migration adds actor/creator/membership foreign-key indexes and revokes client execution of Supabase's pre-existing `rls_auto_enable()` event-trigger function when present.
 
-## Planned normalized entities (not migrated yet)
+## V0.2 catalogue migration
 
-Catalogue: products, categories, brands, units, unit_conversions, product_aliases, product_prices. Products carry SKU/barcode, category/subcategory, HSN/GST, base/purchase/sale units, exact conversion ratios, fixed prices, reorder values, rack, supplier and active status.
+Applied to development as `20260926050304_product_catalogue.sql`. The CLI-created, uncommitted filename `20260926042928` was aligned to the version assigned on first hosted application; SQL was unchanged. It has not shipped in a release.
+
+`product_units` is an authenticated read-only dictionary. `product_categories` and `product_brands` are business-scoped with normalized unique names. `products` has a client UUID, business, unique SKU/barcode, composite tenant category/brand references, immutable base unit, description/HSN, exact `numeric(14,2)` selling price/MRP, `numeric(20,6)` reorder threshold, active flag, optimistic version and timestamps. No balance column exists.
+
+All four tables enforce RLS and authenticated SELECT only. `catalogue_products` validates the selected branch, literal prefix, bounded page size and composite cursor. `save_catalogue_product` is an invoker wrapper around a private, fixed-search-path definer with explicit membership/role checks. It validates string decimals before any cast can round, resolves references, saves and appends an audit event atomically. Direct client mutations are denied.
+
+`private.product_create_requests` has RLS, no client grants and retains original canonical create payload/actor identity. It is intentionally inaccessible through PostgREST. Same UUID/payload/actor retries return the existing row; changed requests fail. Edits require an expected version and increment it. Query, normalized prefix and foreign-key indexes cover the catalogue. Reorder thresholds do not post stock. [Detailed contract](docs/features/products.md).
+
+## Remaining normalized entities
+
+Catalogue extensions: unit_conversions, product_aliases, product_prices, subcategories, GST rates, purchase/sale units, exact conversion ratios, rack and preferred supplier. Current selling prices are catalogue defaults, not historical financial records.
 
 Parties: customers, customer_representatives, suppliers. Sales reference representatives with a composite customer constraint. Credit limits, periods, addresses and GSTIN are protected personal/business data.
 

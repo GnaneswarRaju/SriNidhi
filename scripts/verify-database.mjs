@@ -20,8 +20,11 @@ try {
     await db.exec(await readFile(new URL(name, directory), 'utf8'));
     console.log(`Migration applied: ${name}`);
   }
-  await db.exec(await readFile(new URL('../supabase/tests/foundation.sql', import.meta.url), 'utf8'));
-  console.log('PASS: PostgreSQL foundation security assertions (PGlite auth shim).');
+  const tests = new URL('../supabase/tests/', import.meta.url);
+  for (const name of (await readdir(tests)).filter(n => n.endsWith('.sql')).sort()) {
+    await db.exec(await readFile(new URL(name, tests), 'utf8'));
+    console.log(`PASS: ${name} (PostgreSQL / PGlite Auth shim).`);
+  }
 } finally {
   await db.close();
 }

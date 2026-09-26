@@ -94,7 +94,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settings => 'Settings';
 
   @override
-  String get foundationLabel => 'FOUNDATION · V0.1';
+  String get foundationLabel => 'YOUR STORE · YOUR WORKSPACE';
 
   @override
   String get overviewTitle => 'Your store workspace';
@@ -157,11 +157,11 @@ class AppLocalizationsEn extends AppLocalizations {
       'Not enabled in this version. An internet connection is required to verify branch access.';
 
   @override
-  String get nextTitle => 'Next: products & inventory';
+  String get nextTitle => 'Next: stock movements';
 
   @override
   String get nextBody =>
-      'The next milestone adds your catalogue, opening stock, a stock movement ledger and low-stock alerts.';
+      'Your product catalogue is available in Products. Opening stock, a stock movement ledger and low-stock alerts are coming next.';
 
   @override
   String get workspaceSubtitle =>
@@ -224,4 +224,219 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get returnHome => 'Return to overview';
+
+  @override
+  String get products => 'Products';
+
+  @override
+  String get productsTitle => 'Your product catalogue';
+
+  @override
+  String get productsSubtitle =>
+      'Maintain product details shared across your business. Stock quantities will be added in a later update.';
+
+  @override
+  String get addProduct => 'Add product';
+
+  @override
+  String get editProduct => 'Edit product';
+
+  @override
+  String get productDetails => 'Product details';
+
+  @override
+  String get searchProducts => 'Search by name, SKU or barcode prefix';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get includeInactive => 'Include inactive products';
+
+  @override
+  String get emptyProducts => 'Your catalogue starts here';
+
+  @override
+  String get emptyProductsBody =>
+      'Add your first product with its selling unit and price.';
+
+  @override
+  String get emptyReadOnlyBody =>
+      'Ask your store administrator to add the first product.';
+
+  @override
+  String get noProductsFound => 'No matching products';
+
+  @override
+  String get noProductsFoundBody =>
+      'Try a different prefix or include inactive products.';
+
+  @override
+  String get productsError =>
+      'We could not load products. Check your connection and branch access, then try again.';
+
+  @override
+  String get previousPage => 'Previous';
+
+  @override
+  String get nextPage => 'Next';
+
+  @override
+  String get refreshProducts => 'Refresh products';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get viewDetails => 'View details';
+
+  @override
+  String get activeProduct => 'Active';
+
+  @override
+  String get inactiveProduct => 'Inactive';
+
+  @override
+  String get productName => 'Product name';
+
+  @override
+  String get sku => 'SKU';
+
+  @override
+  String get barcode => 'Barcode (optional)';
+
+  @override
+  String get category => 'Category (optional)';
+
+  @override
+  String get brand => 'Brand (optional)';
+
+  @override
+  String get baseUnit => 'Base unit';
+
+  @override
+  String get baseUnitNote =>
+      'Choose the smallest unit you sell or count. This cannot be changed after saving.';
+
+  @override
+  String get hsnCode => 'HSN code (optional)';
+
+  @override
+  String get salePrice => 'Selling price (₹)';
+
+  @override
+  String get mrp => 'MRP (₹, optional)';
+
+  @override
+  String get reorderQuantity => 'Reorder threshold';
+
+  @override
+  String get reorderNote =>
+      'A default threshold for future low-stock alerts. This does not add stock.';
+
+  @override
+  String get description => 'Description (optional)';
+
+  @override
+  String get activeProductNote =>
+      'Inactive products stay in your records and can be reactivated.';
+
+  @override
+  String get saveProduct => 'Save product';
+
+  @override
+  String get savingProduct => 'Saving…';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String get close => 'Close';
+
+  @override
+  String get requiredField => 'Enter a value.';
+
+  @override
+  String get invalidSku =>
+      'Use letters, numbers, dots, slashes, underscores or hyphens. Start with a letter or number.';
+
+  @override
+  String get invalidBarcode =>
+      'Use letters, numbers, dots, slashes, underscores or hyphens.';
+
+  @override
+  String get invalidHsn => 'Enter 4 to 8 digits.';
+
+  @override
+  String get invalidPrice =>
+      'Enter a non-negative amount with up to 12 whole digits and 2 decimal places.';
+
+  @override
+  String get invalidMrp => 'MRP must be at least the selling price.';
+
+  @override
+  String get invalidQuantity =>
+      'Enter a non-negative quantity with up to 14 whole digits and 6 decimal places.';
+
+  @override
+  String get wholeQuantity => 'This unit requires a whole-number quantity.';
+
+  @override
+  String get productSaveError =>
+      'Saving could not be confirmed. Keep these details unchanged and try again, or close and refresh the catalogue before editing them.';
+
+  @override
+  String get productDuplicate =>
+      'That SKU or barcode is already used. Enter a unique value.';
+
+  @override
+  String get productConflict =>
+      'This product or request has changed. Close this form and refresh the catalogue before trying again.';
+
+  @override
+  String get productForbidden =>
+      'Your account cannot save products in this branch. Ask your store administrator to check your access.';
+
+  @override
+  String get productInvalid =>
+      'Some product details were rejected. Check the fields and try again.';
+
+  @override
+  String get unitPcs => 'Piece (PCS)';
+
+  @override
+  String get unitBox => 'Box (BOX)';
+
+  @override
+  String get unitPack => 'Pack (PACK)';
+
+  @override
+  String get unitBag => 'Bag (BAG)';
+
+  @override
+  String get unitSet => 'Set (SET)';
+
+  @override
+  String get unitRoll => 'Roll (ROLL)';
+
+  @override
+  String get unitKg => 'Kilogram (KG)';
+
+  @override
+  String get unitG => 'Gram (G)';
+
+  @override
+  String get unitM => 'Metre (M)';
+
+  @override
+  String get unitCm => 'Centimetre (CM)';
+
+  @override
+  String get unitFt => 'Foot (FT)';
+
+  @override
+  String get unitL => 'Litre (L)';
+
+  @override
+  String get unitMl => 'Millilitre (ML)';
 }

@@ -16,7 +16,11 @@ jobs:
       - run: supabase start
       - run: supabase db reset --local
       - run: supabase db lint --local --level warning --fail-on warning
-      - run: psql postgresql://postgres:postgres@127.0.0.1:54322/postgres -v ON_ERROR_STOP=1 -f supabase/tests/foundation.sql
+      - name: Verify every SQL contract
+        run: |
+          for test in supabase/tests/*.sql; do
+            psql postgresql://postgres:postgres@127.0.0.1:54322/postgres -v ON_ERROR_STOP=1 -f "$test"
+          done
       - name: Verify real Auth and branch access
         shell: bash
         run: |
