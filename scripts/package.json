@@ -1,0 +1,7 @@
+{
+  "name": "store-database-verification",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node verify-database.mjs" },
+  "devDependencies": { "@electric-sql/pglite": "0.3.14" }
+}
